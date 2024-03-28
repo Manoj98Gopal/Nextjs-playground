@@ -1,5 +1,9 @@
+"use client"
+
+
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
+import { Editor } from "./Editor";
 
 export const EditorComponent = () => {
   return (
@@ -16,8 +20,7 @@ export const EditorComponent = () => {
           <Typography variant="h5" textAlign="center" pb={2}>
             Text Editor
           </Typography>
-
-
+          <Editor />
         </Box>
       </Container>
     </>
