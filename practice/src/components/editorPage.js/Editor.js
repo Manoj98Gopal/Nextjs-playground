@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import EditorJS from "@editorjs/editorjs";
+import Header from "@editorjs/header";
 
 export const Editor = () => {
   const ejInstance = useRef();
@@ -14,6 +15,9 @@ export const Editor = () => {
       onChange: async () => {
         let content = await editor.saver.save();
         console.log(content);
+      },
+      tools: {
+        header: Header,
       },
     });
   };
