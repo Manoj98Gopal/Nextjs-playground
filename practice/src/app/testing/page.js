@@ -17,7 +17,10 @@ function Page() {
   const [buttonColorChange, setButtonColorChange] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
 
+  const [secondWay,setSecondWay] = useState(null)
+
   const stackRef = useRef(null);
+  const secondWayRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,7 +76,53 @@ function Page() {
     };
   }, []);
 
-  console.log("active id =====",activeIndex)
+
+
+  //second way  experiment of enabling the button
+  useEffect(()=>{
+
+    const handleScrollSecond = () => {
+
+      const observer = new IntersectionObserver(entries => {
+        const visibleChildIds = entries
+          .filter(entry => entry.isIntersecting)
+          .map(entry => entry.target.id);
+
+        // setVisibleChildren(visibleChildIds);
+
+        setSecondWay(parseInt(visibleChildIds[1]))
+
+        // console.log("www entrys =====",entries)
+        // console.log("www visibles ===",visibleChildIds)
+
+
+      }, { threshold: 1.0}); 
+
+
+
+
+      const children = Array.from(secondWayRef.current.children);
+    children.forEach(child => observer.observe(child));
+
+    }
+
+
+
+    if (secondWayRef.current) {
+      secondWayRef.current.addEventListener("scroll", handleScrollSecond);
+
+      handleScrollSecond()
+    }
+
+    return () => {
+      if (secondWayRef.current) {
+        secondWayRef.current.removeEventListener("scroll", handleScrollSecond);
+      }
+    };
+
+
+  },[])
+
 
 
 
@@ -179,6 +228,48 @@ function Page() {
           })}
         </Stack>
       </Box>
+
+
+      <Box>
+      <Stack
+          ref={secondWayRef}
+          direction="column"
+          spacing={2}
+          sx={{ maxHeight: "500px", overflow: "auto", padding: "30px" }}
+        >
+          {list.map((data, idx) => {
+            return (
+              <Stack
+                direction="column"
+                spacing={2}
+                sx={{
+                  border: "1px solid black",
+                  borderRadius: "12px",
+                  height: "150px",
+                  width: "200px",
+                  padding: "20px",
+                }}
+                key={idx}
+                id={idx}
+              >
+                <Typography variant="h4">{data}</Typography>
+                <Divider />
+                <Button
+                  variant={secondWay === idx ? "contained" : "outlined"}
+                >
+                  Click Here
+                </Button>
+              </Stack>
+            );
+          })}
+        </Stack>
+
+
+      </Box>
+
+
+
+
     </Stack>
   );
 }
