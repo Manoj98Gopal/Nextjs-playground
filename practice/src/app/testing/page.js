@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -15,6 +15,68 @@ import { list } from "@/constants/dataContants";
 function Page() {
   const [openTooltip, setOpenTooltip] = useState({});
   const [buttonColorChange, setButtonColorChange] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const stackRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!stackRef.current) return;
+
+      const container = stackRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const boxes = container.querySelectorAll(".inner-stack");
+      const visibleIds = [];
+
+      boxes.forEach((data) => {
+        const boxRect = data.getBoundingClientRect();
+
+        // Check if the box is within the visible area of the container
+        if (
+          boxRect.top >= containerRect.top &&
+          boxRect.bottom <= containerRect.bottom
+        ) {
+          visibleIds.push(data.id);
+        }
+      });
+
+      const middleIndex = Math.floor(visibleIds.length / 2); // Calculate the middle index
+      let middleCard
+
+      if (visibleIds.length % 2 === 0) {
+        // If the array has an even number of elements, return the two middle elements
+        middleCard = parseInt(visibleIds[middleIndex -1])
+      } else {
+        // If the array has an odd number of elements, return the middle element
+        middleCard = parseInt(visibleIds[middleIndex])
+
+      }
+    
+
+      setActiveIndex(middleCard)
+
+      // console.log("box ====", visibleIds);
+
+
+    };
+
+    if (stackRef.current) {
+      stackRef.current.addEventListener("scroll", handleScroll);
+
+      handleScroll()
+    }
+
+    return () => {
+      if (stackRef.current) {
+        stackRef.current.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
+
+  console.log("active id =====",activeIndex)
+
+
+
 
   const handleTooltipClose = (name) => {
     setOpenTooltip((prevState) => ({
@@ -82,6 +144,7 @@ function Page() {
 
       <Box>
         <Stack
+          ref={stackRef}
           direction="column"
           spacing={2}
           sx={{ maxHeight: "500px", overflow: "auto", padding: "30px" }}
@@ -89,6 +152,7 @@ function Page() {
           {list.map((data, idx) => {
             return (
               <Stack
+                className="inner-stack"
                 direction="column"
                 spacing={2}
                 sx={{
@@ -101,13 +165,12 @@ function Page() {
                 key={idx}
                 onMouseEnter={() => setButtonColorChange(data)}
                 onMouseLeave={() => setButtonColorChange(null)}
+                id={idx}
               >
                 <Typography variant="h4">{data}</Typography>
                 <Divider />
                 <Button
-                  variant={
-                    buttonColorChange === data ? "contained" : "outlined"
-                  }
+                  variant={activeIndex === idx ? "contained" : "outlined"}
                 >
                   Click Here
                 </Button>
