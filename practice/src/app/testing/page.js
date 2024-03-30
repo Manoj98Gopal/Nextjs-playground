@@ -88,14 +88,7 @@ function Page() {
           .filter(entry => entry.isIntersecting)
           .map(entry => entry.target.id);
 
-        // setVisibleChildren(visibleChildIds);
-
         setSecondWay(parseInt(visibleChildIds[1]))
-
-        // console.log("www entrys =====",entries)
-        // console.log("www visibles ===",visibleChildIds)
-
-
       }, { threshold: 1.0}); 
 
 
