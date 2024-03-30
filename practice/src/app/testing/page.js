@@ -1,11 +1,20 @@
 "use client";
 
 import React, { useState } from "react";
-import { ClickAwayListener, Stack, Tooltip, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  ClickAwayListener,
+  Divider,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import { list } from "@/constants/dataContants";
 
 function Page() {
   const [openTooltip, setOpenTooltip] = useState({});
+  const [buttonColorChange, setButtonColorChange] = useState(null);
 
   const handleTooltipClose = (name) => {
     setOpenTooltip((prevState) => ({
@@ -26,7 +35,14 @@ function Page() {
   };
 
   return (
-    <div>
+    <Stack
+      direction="row"
+      spacing={13}
+      justifyContent="center"
+      sx={{
+        mt: 10,
+      }}
+    >
       <Stack
         direction="column"
         justifyContent="center"
@@ -63,7 +79,44 @@ function Page() {
           </ClickAwayListener>
         ))}
       </Stack>
-    </div>
+
+      <Box>
+        <Stack
+          direction="column"
+          spacing={2}
+          sx={{ maxHeight: "500px", overflow: "auto", padding: "30px" }}
+        >
+          {list.map((data, idx) => {
+            return (
+              <Stack
+                direction="column"
+                spacing={2}
+                sx={{
+                  border: "1px solid black",
+                  borderRadius: "12px",
+                  height: "150px",
+                  width: "200px",
+                  padding: "20px",
+                }}
+                key={idx}
+                onMouseEnter={() => setButtonColorChange(data)}
+                onMouseLeave={() => setButtonColorChange(null)}
+              >
+                <Typography variant="h4">{data}</Typography>
+                <Divider />
+                <Button
+                  variant={
+                    buttonColorChange === data ? "contained" : "outlined"
+                  }
+                >
+                  Click Here
+                </Button>
+              </Stack>
+            );
+          })}
+        </Stack>
+      </Box>
+    </Stack>
   );
 }
 
