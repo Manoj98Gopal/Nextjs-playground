@@ -17,10 +17,10 @@ function Page() {
   const [buttonColorChange, setButtonColorChange] = useState(null);
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const [secondWay,setSecondWay] = useState(null)
+  const [secondWay, setSecondWay] = useState(null);
 
   const stackRef = useRef(null);
-  const secondWayRef = useRef(null)
+  const secondWayRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,29 +44,25 @@ function Page() {
       });
 
       const middleIndex = Math.floor(visibleIds.length / 2); // Calculate the middle index
-      let middleCard
+      let middleCard;
 
       if (visibleIds.length % 2 === 0) {
         // If the array has an even number of elements, return the two middle elements
-        middleCard = parseInt(visibleIds[middleIndex -1])
+        middleCard = parseInt(visibleIds[middleIndex - 1]);
       } else {
         // If the array has an odd number of elements, return the middle element
-        middleCard = parseInt(visibleIds[middleIndex])
-
+        middleCard = parseInt(visibleIds[middleIndex]);
       }
-    
 
-      setActiveIndex(middleCard)
+      setActiveIndex(middleCard);
 
       // console.log("box ====", visibleIds);
-
-
     };
 
     if (stackRef.current) {
       stackRef.current.addEventListener("scroll", handleScroll);
 
-      handleScroll()
+      handleScroll();
     }
 
     return () => {
@@ -76,35 +72,28 @@ function Page() {
     };
   }, []);
 
-
-
   //second way  experiment of enabling the button
-  useEffect(()=>{
-
+  useEffect(() => {
     const handleScrollSecond = () => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visibleChildIds = entries
+            .filter((entry) => entry.isIntersecting)
+            .map((entry) => entry.target.id);
 
-      const observer = new IntersectionObserver(entries => {
-        const visibleChildIds = entries
-          .filter(entry => entry.isIntersecting)
-          .map(entry => entry.target.id);
-
-        setSecondWay(parseInt(visibleChildIds[1]))
-      }, { threshold: 1.0}); 
-
-
-
+          setSecondWay(parseInt(visibleChildIds[1]));
+        },
+        { threshold: 1.0 }
+      );
 
       const children = Array.from(secondWayRef.current.children);
-    children.forEach(child => observer.observe(child));
-
-    }
-
-
+      children.forEach((child) => observer.observe(child));
+    };
 
     if (secondWayRef.current) {
       secondWayRef.current.addEventListener("scroll", handleScrollSecond);
 
-      handleScrollSecond()
+      handleScrollSecond();
     }
 
     return () => {
@@ -112,13 +101,7 @@ function Page() {
         secondWayRef.current.removeEventListener("scroll", handleScrollSecond);
       }
     };
-
-
-  },[])
-
-
-
-
+  }, []);
 
   const handleTooltipClose = (name) => {
     setOpenTooltip((prevState) => ({
@@ -222,9 +205,8 @@ function Page() {
         </Stack>
       </Box>
 
-
       <Box>
-      <Stack
+        <Stack
           ref={secondWayRef}
           direction="column"
           spacing={2}
@@ -247,22 +229,14 @@ function Page() {
               >
                 <Typography variant="h4">{data}</Typography>
                 <Divider />
-                <Button
-                  variant={secondWay === idx ? "contained" : "outlined"}
-                >
+                <Button variant={secondWay === idx ? "contained" : "outlined"}>
                   Click Here
                 </Button>
               </Stack>
             );
           })}
         </Stack>
-
-
       </Box>
-
-
-
-
     </Stack>
   );
 }
