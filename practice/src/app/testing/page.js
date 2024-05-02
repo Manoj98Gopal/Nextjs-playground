@@ -7,6 +7,7 @@ import {
   ClickAwayListener,
   Divider,
   Stack,
+  TextField,
   Tooltip,
   Typography,
 } from "@mui/material";
@@ -130,6 +131,13 @@ function Page() {
         mt: 10,
       }}
     >
+
+     <TextField 
+      label="Email"
+      size="small"
+      />
+
+
       <Stack
         direction="column"
         justifyContent="center"
