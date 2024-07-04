@@ -5,6 +5,7 @@ import {
   Box,
   Button,
   ClickAwayListener,
+  Container,
   Divider,
   Stack,
   TextField,
@@ -12,6 +13,33 @@ import {
   Typography,
 } from "@mui/material";
 import { list } from "@/constants/dataContants";
+
+const skills = [
+  "JavaScript",
+  "HTML",
+  "CSS",
+  "React",
+  "Node.js",
+  "Python",
+  "Java",
+  "SQL",
+  "Git",
+  "Redux",
+  "Angular",
+  "Vue.js",
+  "Express.js",
+  "MongoDB",
+  "C++",
+  "Ruby",
+  "PHP",
+  "TypeScript",
+  "Docker",
+  "AWS",
+];
+
+const Saparetor = () => {
+  return <span>·</span>;
+};
 
 function Page() {
   const [openTooltip, setOpenTooltip] = useState({});
@@ -123,129 +151,152 @@ function Page() {
   };
 
   return (
-    <Stack
-      direction="row"
-      spacing={13}
-      justifyContent="center"
-      sx={{
-        mt: 10,
-      }}
-    >
-
-     <TextField 
-      label="Email"
-      size="small"
-      />
-
+    <>
+      <Container maxWidth="xl">
+        <Stack
+          direction="row"
+          gap={2}
+          flexWrap="wrap"
+          sx={{ marginTop: "10px" }}
+          divider={<Saparetor />}
+          alignItems="center"
+        >
+          {skills?.map((data, idx) => {
+            return (
+              <Box key={idx}>
+                <Typography variant="h6">{data}</Typography>
+              </Box>
+            );
+          })}
+        </Stack>
+      </Container>
 
       <Stack
-        direction="column"
+        direction="row"
+        spacing={13}
         justifyContent="center"
-        alignItems="center"
-        sx={{ marginTop: "13rem" }}
-        flexWrap="wrap"
-        spacing={5}
+        sx={{
+          mt: 10,
+        }}
       >
-        {list?.map((name, idx) => (
-          <ClickAwayListener
-            key={idx}
-            onClickAway={() => handleTooltipClose(name)}
-          >
-            <Tooltip
-              PopperProps={{
-                disablePortal: true,
-              }}
-              placement="top"
-              onClose={() => handleTooltipClose(name)}
-              open={openTooltip[name] || false}
-              disableFocusListener
-              disableHoverListener
-              disableTouchListener
-              title={
-                <div>
-                  <Typography variant="h5">{name}</Typography>
-                </div>
-              }
+        <Box sx={{ width: "450px" }}>
+          <TextField label="Email" size="small" />
+        </Box>
+
+        <Stack
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ marginTop: "13rem" }}
+          flexWrap="wrap"
+          spacing={5}
+        >
+          {list?.map((name, idx) => (
+            <ClickAwayListener
+              key={idx}
+              onClickAway={() => handleTooltipClose(name)}
             >
-              <Typography variant="h4" onClick={() => handleTooltipOpen(name)}>
-                {name}
-              </Typography>
-            </Tooltip>
-          </ClickAwayListener>
-        ))}
-      </Stack>
-
-      <Box>
-        <Stack
-          ref={stackRef}
-          direction="column"
-          spacing={2}
-          sx={{ maxHeight: "500px", overflow: "auto", padding: "30px" }}
-        >
-          {list.map((data, idx) => {
-            return (
-              <Stack
-                className="inner-stack"
-                direction="column"
-                spacing={2}
-                sx={{
-                  border: "1px solid black",
-                  borderRadius: "12px",
-                  height: "150px",
-                  width: "200px",
-                  padding: "20px",
+              <Tooltip
+                PopperProps={{
+                  disablePortal: true,
                 }}
-                key={idx}
-                onMouseEnter={() => setButtonColorChange(data)}
-                onMouseLeave={() => setButtonColorChange(null)}
-                id={idx}
+                placement="top"
+                onClose={() => handleTooltipClose(name)}
+                open={openTooltip[name] || false}
+                disableFocusListener
+                disableHoverListener
+                disableTouchListener
+                title={
+                  <div>
+                    <Typography variant="h5">{name}</Typography>
+                  </div>
+                }
               >
-                <Typography variant="h4">{data}</Typography>
-                <Divider />
-                <Button
-                  variant={activeIndex === idx ? "contained" : "outlined"}
+                <Typography
+                  variant="h4"
+                  onClick={() => handleTooltipOpen(name)}
                 >
-                  Click Here
-                </Button>
-              </Stack>
-            );
-          })}
+                  {name}
+                </Typography>
+              </Tooltip>
+            </ClickAwayListener>
+          ))}
         </Stack>
-      </Box>
 
-      <Box>
-        <Stack
-          ref={secondWayRef}
-          direction="column"
-          spacing={2}
-          sx={{ maxHeight: "500px", overflow: "auto", padding: "30px" }}
-        >
-          {list.map((data, idx) => {
-            return (
-              <Stack
-                direction="column"
-                spacing={2}
-                sx={{
-                  border: "1px solid black",
-                  borderRadius: "12px",
-                  height: "150px",
-                  width: "200px",
-                  padding: "20px",
-                }}
-                key={idx}
-                id={idx}
-              >
-                <Typography variant="h4">{data}</Typography>
-                <Divider />
-                <Button variant={secondWay === idx ? "contained" : "outlined"}>
-                  Click Here
-                </Button>
-              </Stack>
-            );
-          })}
-        </Stack>
-      </Box>
-    </Stack>
+        <Box>
+          <Stack
+            ref={stackRef}
+            direction="column"
+            spacing={2}
+            sx={{ maxHeight: "500px", overflow: "auto", padding: "30px" }}
+          >
+            {list.map((data, idx) => {
+              return (
+                <Stack
+                  className="inner-stack"
+                  direction="column"
+                  spacing={2}
+                  sx={{
+                    border: "1px solid black",
+                    borderRadius: "12px",
+                    height: "150px",
+                    width: "200px",
+                    padding: "20px",
+                  }}
+                  key={idx}
+                  onMouseEnter={() => setButtonColorChange(data)}
+                  onMouseLeave={() => setButtonColorChange(null)}
+                  id={idx}
+                >
+                  <Typography variant="h4">{data}</Typography>
+                  <Divider />
+                  <Button
+                    variant={activeIndex === idx ? "contained" : "outlined"}
+                  >
+                    Click Here
+                  </Button>
+                </Stack>
+              );
+            })}
+          </Stack>
+        </Box>
+
+        <Box>
+          <Stack
+            ref={secondWayRef}
+            direction="column"
+            spacing={2}
+            sx={{ maxHeight: "500px", overflow: "auto", padding: "30px" }}
+          >
+            {list.map((data, idx) => {
+              return (
+                <Stack
+                  direction="column"
+                  spacing={2}
+                  sx={{
+                    border: "1px solid black",
+                    borderRadius: "12px",
+                    height: "150px",
+                    width: "200px",
+                    padding: "20px",
+                  }}
+                  key={idx}
+                  id={idx}
+                >
+                  <Typography variant="h4">{data}</Typography>
+                  <Divider />
+                  <Button
+                    variant={secondWay === idx ? "contained" : "outlined"}
+                  >
+                    Click Here
+                  </Button>
+                </Stack>
+              );
+            })}
+          </Stack>
+        </Box>
+      </Stack>
+    </>
   );
 }
 
