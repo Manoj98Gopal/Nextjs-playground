@@ -1,154 +1,255 @@
-
 export const DEFAULT_DATA = {
-    time: new Date().getTime(),
-    blocks: [
-      {
-        type: "header",
-        data: {
-          level: 2,
-          text: "My name is Shankar.",
-        },
+  time: new Date().getTime(),
+  blocks: [
+    {
+      type: "header",
+      data: {
+        level: 2,
+        text: "My name is Shankar.",
       },
-    ],
-  };
+    },
+  ],
+};
 
+export const list = [
+  "Testing 1",
+  "Testing 2",
+  "Testing 3",
+  "Testing 4",
+  "Testing 5",
+  "Testing 6",
+  "Testing 7",
+  "Testing 8",
+  "Testing 9",
+];
 
+export const personRecord = [
+  {
+    name: "John Doe",
+    age: 32,
+    location: "New York",
+    salary: 60000,
+  },
+  {
+    name: "Jane Smith",
+    age: 28,
+    location: "Los Angeles",
+    salary: 75000,
+  },
+  {
+    name: "Michael Johnson",
+    age: 40,
+    location: "Chicago",
+    salary: 80000,
+  },
+  {
+    name: "Emily Brown",
+    age: 35,
+    location: "Houston",
+    salary: 70000,
+  },
+  {
+    name: "Daniel Lee",
+    age: 45,
+    location: "Phoenix",
+    salary: 90000,
+  },
+  {
+    name: "Olivia Wilson",
+    age: 26,
+    location: "Philadelphia",
+    salary: 65000,
+  },
+  {
+    name: "William Taylor",
+    age: 38,
+    location: "San Antonio",
+    salary: 85000,
+  },
+  {
+    name: "Emma Martinez",
+    age: 29,
+    location: "San Diego",
+    salary: 72000,
+  },
+  {
+    name: "Alexander Anderson",
+    age: 34,
+    location: "Dallas",
+    salary: 78000,
+  },
+  {
+    name: "Sophia Thomas",
+    age: 31,
+    location: "San Jose",
+    salary: 67000,
+  },
+  {
+    name: "James White",
+    age: 33,
+    location: "Austin",
+    salary: 69000,
+  },
+  {
+    name: "Mia Jackson",
+    age: 27,
+    location: "Jacksonville",
+    salary: 68000,
+  },
+  {
+    name: "Benjamin Harris",
+    age: 36,
+    location: "Indianapolis",
+    salary: 82000,
+  },
+  {
+    name: "Charlotte Nelson",
+    age: 30,
+    location: "San Francisco",
+    salary: 85000,
+  },
+  {
+    name: "Ethan Carter",
+    age: 39,
+    location: "Columbus",
+    salary: 76000,
+  },
+  {
+    name: "Ava King",
+    age: 25,
+    location: "Fort Worth",
+    salary: 63000,
+  },
+  {
+    name: "Liam Hill",
+    age: 37,
+    location: "Charlotte",
+    salary: 74000,
+  },
+  {
+    name: "Isabella Scott",
+    age: 41,
+    location: "Seattle",
+    salary: 88000,
+  },
+  {
+    name: "Noah Green",
+    age: 32,
+    location: "Denver",
+    salary: 82000,
+  },
+  {
+    name: "Grace Adams",
+    age: 28,
+    location: "Washington",
+    salary: 71000,
+  },
+];
 
-  export const list = [
-    "Testing 1",
-    "Testing 2",
-    "Testing 3",
-    "Testing 4",
-    "Testing 5",
-    "Testing 6",
-    "Testing 7",
-    "Testing 8",
-    "Testing 9",
-    
+export const SKILLS = [
+  "JavaScript",
+  "React.js",
+  "Next.js",
+  "HTML5",
+  "CSS3",
+  "TypeScript",
+  "Redux",
+  "Node.js",
+  "Express.js",
+  "REST APIs",
+  "GraphQL",
+  "Webpack",
+  "Babel",
+  "Git",
+  "GitHub",
+  "Version Control",
+  "Responsive Design",
+  "Mobile First Design",
+  "User Interface (UI) Design",
+  "User Experience (UX) Design",
+  "Testing and Debugging",
+  "Jest",
+  "Cypress",
+  "Enzyme",
+  "SASS",
+  "LESS",
+  "Styled-components",
+  "Material-UI (MUI)",
+  "Bootstrap",
+  "Tailwind CSS",
+  "Chakra UI",
+  "Figma",
+  "Adobe XD",
+  "Wireframing",
+  "Prototyping",
+  "Performance Optimization",
+  "SEO",
+  "Accessibility (a11y)",
+  "Web Security",
+  "Cross-Browser Compatibility",
+  "Continuous Integration (CI)",
+  "Continuous Deployment (CD)",
+  "Docker",
+  "Kubernetes",
+  "AWS",
+  "Azure",
+  "Google Cloud Platform (GCP)",
+  "Firebase",
+  "MongoDB",
+  "SQL",
+  "Nginx",
+];
 
-  ];
-
-
-  export const personRecord = [
-    {
-      "name": "John Doe",
-      "age": 32,
-      "location": "New York",
-      "salary": 60000
-    },
-    {
-      "name": "Jane Smith",
-      "age": 28,
-      "location": "Los Angeles",
-      "salary": 75000
-    },
-    {
-      "name": "Michael Johnson",
-      "age": 40,
-      "location": "Chicago",
-      "salary": 80000
-    },
-    {
-      "name": "Emily Brown",
-      "age": 35,
-      "location": "Houston",
-      "salary": 70000
-    },
-    {
-      "name": "Daniel Lee",
-      "age": 45,
-      "location": "Phoenix",
-      "salary": 90000
-    },
-    {
-      "name": "Olivia Wilson",
-      "age": 26,
-      "location": "Philadelphia",
-      "salary": 65000
-    },
-    {
-      "name": "William Taylor",
-      "age": 38,
-      "location": "San Antonio",
-      "salary": 85000
-    },
-    {
-      "name": "Emma Martinez",
-      "age": 29,
-      "location": "San Diego",
-      "salary": 72000
-    },
-    {
-      "name": "Alexander Anderson",
-      "age": 34,
-      "location": "Dallas",
-      "salary": 78000
-    },
-    {
-      "name": "Sophia Thomas",
-      "age": 31,
-      "location": "San Jose",
-      "salary": 67000
-    },
-    {
-      "name": "James White",
-      "age": 33,
-      "location": "Austin",
-      "salary": 69000
-    },
-    {
-      "name": "Mia Jackson",
-      "age": 27,
-      "location": "Jacksonville",
-      "salary": 68000
-    },
-    {
-      "name": "Benjamin Harris",
-      "age": 36,
-      "location": "Indianapolis",
-      "salary": 82000
-    },
-    {
-      "name": "Charlotte Nelson",
-      "age": 30,
-      "location": "San Francisco",
-      "salary": 85000
-    },
-    {
-      "name": "Ethan Carter",
-      "age": 39,
-      "location": "Columbus",
-      "salary": 76000
-    },
-    {
-      "name": "Ava King",
-      "age": 25,
-      "location": "Fort Worth",
-      "salary": 63000
-    },
-    {
-      "name": "Liam Hill",
-      "age": 37,
-      "location": "Charlotte",
-      "salary": 74000
-    },
-    {
-      "name": "Isabella Scott",
-      "age": 41,
-      "location": "Seattle",
-      "salary": 88000
-    },
-    {
-      "name": "Noah Green",
-      "age": 32,
-      "location": "Denver",
-      "salary": 82000
-    },
-    {
-      "name": "Grace Adams",
-      "age": 28,
-      "location": "Washington",
-      "salary": 71000
-    }
-  ]
-  
+export const FooterLinks = [
+  { pageLink: "/home", label: "Home" },
+  { pageLink: "/about", label: "About Us" },
+  { pageLink: "/services", label: "Services" },
+  { pageLink: "/contact", label: "Contact" },
+  { pageLink: "/faq", label: "FAQ" },
+  { pageLink: "/blog", label: "Blog" },
+  { pageLink: "/portfolio", label: "Portfolio" },
+  { pageLink: "/careers", label: "Careers" },
+  { pageLink: "/testimonials", label: "Testimonials" },
+  { pageLink: "/pricing", label: "Pricing" },
+  { pageLink: "/team", label: "Our Team" },
+  { pageLink: "/terms", label: "Terms of Service" },
+  { pageLink: "/privacy", label: "Privacy Policy" },
+  { pageLink: "/support", label: "Support" },
+  { pageLink: "/login", label: "Login" },
+  { pageLink: "/register", label: "Register" },
+  { pageLink: "/dashboard", label: "Dashboard" },
+  { pageLink: "/settings", label: "Settings" },
+  { pageLink: "/profile", label: "Profile" },
+  { pageLink: "/notifications", label: "Notifications" },
+  { pageLink: "/messages", label: "Messages" },
+  { pageLink: "/events", label: "Events" },
+  { pageLink: "/gallery", label: "Gallery" },
+  { pageLink: "/downloads", label: "Downloads" },
+  { pageLink: "/shop", label: "Shop" },
+  { pageLink: "/cart", label: "Shopping Cart" },
+  { pageLink: "/checkout", label: "Checkout" },
+  { pageLink: "/wishlist", label: "Wishlist" },
+  { pageLink: "/orders", label: "Orders" },
+  { pageLink: "/shipping", label: "Shipping" },
+  { pageLink: "/returns", label: "Returns" },
+  { pageLink: "/newsletter", label: "Newsletter" },
+  { pageLink: "/sitemap", label: "Sitemap" },
+  { pageLink: "/partnerships", label: "Partnerships" },
+  { pageLink: "/affiliates", label: "Affiliates" },
+  { pageLink: "/press", label: "Press" },
+  { pageLink: "/legal", label: "Legal" },
+  { pageLink: "/resources", label: "Resources" },
+  { pageLink: "/downloads", label: "Downloads" },
+  { pageLink: "/forum", label: "Forum" },
+  { pageLink: "/community", label: "Community" },
+  { pageLink: "/case-studies", label: "Case Studies" },
+  { pageLink: "/testimonials", label: "Testimonials" },
+  { pageLink: "/reviews", label: "Reviews" },
+  { pageLink: "/guides", label: "Guides" },
+  { pageLink: "/how-it-works", label: "How It Works" },
+  { pageLink: "/features", label: "Features" },
+  { pageLink: "/success-stories", label: "Success Stories" },
+  { pageLink: "/faqs", label: "FAQs" },
+  { pageLink: "/tutorials", label: "Tutorials" },
+  { pageLink: "/blog-posts", label: "Blog Posts" },
+];

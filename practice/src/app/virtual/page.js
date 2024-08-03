@@ -32,15 +32,13 @@ function page() {
   const tempHeight = useRef();
 
   useEffect(() => {
-    console.log("temp data ===", tempHeight.current.clientHeight);
-
     setHeight(tempHeight.current.clientHeight);
   }, []);
 
   const Row = ({ index, style, data }) => {
+    console.log("calling ",index)
     return (
-      <div style={{ ...style,          overflow: "hidden",
-    }}>
+      <div style={{ ...style, overflow: "hidden" }}>
         <Record {...data[index]} />
       </div>
     );
