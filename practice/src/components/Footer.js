@@ -10,7 +10,7 @@ export default function Footer() {
         Quick links
       </Typography>
       <Typography variant="h5" component="h3" sx={{ mt: 2, mb: 3 }}>
-        Page links
+        Page links askdjhfa
       </Typography>
       <Box
         component="nav"
